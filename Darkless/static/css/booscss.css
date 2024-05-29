@@ -1,0 +1,159 @@
+.navbar {
+    background-color: black;
+    margin-bottom: 40px;
+}
+
+
+.nav-link.active{
+    color: white !important;
+}
+
+.contain{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.container{
+    margin-top: 40px;
+}
+.body{
+    background-color: black;
+}
+
+.warnings{
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    color: #ff2c2c;
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+#fechaNac {
+    margin-top: 35px;
+    margin-bottom: 45px;
+}
+
+.row {
+    color: aliceblue;
+}
+
+#btnCrearCuenta, #btnRes, #btnSub {
+ margin: 5px 5px 5px 5px
+}
+
+.card-img-top{
+    object-fit: cover;
+    width: 200px; /* Tamaño deseado para las imágenes */
+    height: 300px; /* Tamaño deseado para las imágenes */
+}
+
+.btnAgregarCarro {
+    color: #ffff;
+    border-radius: 7px;
+    background-color: black;
+    box-shadow: 3px 3px 3px grey;
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 10px;
+}
+
+#navRight {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container-items {
+    margin: auto 10px ;
+}
+
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.cart-items {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.cart-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.cart-summary {
+    width: 250px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Estilos para botones */
+.buttoncarro {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.buttoncarro:hover {
+    background-color: black;
+}
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: 0; /* Posición en la esquina superior derecha */
+    width: 50%; /* Ocupa el 50% del ancho del viewport */
+    height: 100%; /* Ocupa todo el alto del viewport */
+    max-width: 500px; /* Tamaño máximo para la ventana del carro */
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease; /* Transición suave cuando se abre y se cierra */
+    z-index: 999; /* Asegura que esté por encima del resto del contenido */
+}
+
+.close-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000; /* Asegura que esté por encima del contenido */
+}
+
+.close-btn:hover {
+    color: black; /* Cambia el color al pasar el ratón sobre el botón */
+}
+
+@media (max-width: 768px) {
+    .cart {
+        width: 100%;
+        max-width: none;
+    }
+
+}
