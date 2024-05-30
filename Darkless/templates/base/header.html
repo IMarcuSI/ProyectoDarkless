@@ -1,7 +1,8 @@
 <header>
+  {% load static %}
     <nav class="navbar navbar-expand-lg" >
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html"><img src="img/logo.jpg" alt="" width="80"></a>
+          <a class="navbar-brand" href="index.html"><img src="{% static 'img/logo.jpg'%}" alt="" width="80"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -20,10 +21,10 @@
             <nav class="navbar">
               <div class="container">
                 <a class="navbar-brand" href="cuenta.html">
-                  <img src="img/cuenta.jpg" alt="Bootstrap" width="40" height="40">
+                  <img src="{% static 'img/cuenta.jpg'%}" alt="Bootstrap" width="40" height="40">
                 </a>
                 <a class="navbar-brand" href="cuenta.html">
-                  <img src="img/carro.jpg" alt="Bootstrap" width="40" height="40">
+                  <img src="{% static 'img/carro.jpg'%}" alt="Bootstrap" width="40" height="40">
                 </a>
               </div>
             </nav>
