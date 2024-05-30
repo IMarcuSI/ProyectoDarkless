@@ -10,5 +10,5 @@ urlpatterns = [
     path("hombre", views.hombre, name="hombre"),
     path("mujer", views.mujer, name="mujer"),
 ]
-]
+
 
