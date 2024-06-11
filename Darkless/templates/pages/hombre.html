@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/booscss.css'%}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Ropa hombre</title>
 </head>
 <body class="body">
+    {% include 'base/header.html'%}
       <div class="container">
         <div class="card-group">
           <div class="card">
-            <a href="#"><img src="img/hombre1.png" class="card-img-top" alt="..."></a>
+            <a href="#"><img src="{% static 'img/hombre1.jpg'%}" class="card-img-top" alt="..."></a>
             <div class="card-body">
               <div class="info-producto">
                 <h5>Pantalones Cargo para hombre, ropa de calle Harajuku</h5>
@@ -21,7 +23,7 @@
             </div>
           </div>
           <div class="card">
-            <a href=""><img src="img/hombre2.jpg" class="card-img-top" alt="..."></a>
+            <a href=""><img src="{% static 'img/Hombre2.jpg'%}" class="card-img-top" alt="..."></a>
             <div class="card-body">
               <div class="info-producto">
                 <h5>Camisa urbana mezclilla</h5>
@@ -31,7 +33,7 @@
             </div>
           </div>
           <div class="card">
-            <a href="#"><img src="img/hombre3.jpg" class="card-img-top" alt="..."></a>
+            <a href="#"><img src="{% static 'img/hombre3.jpg'%}"class="card-img-top" alt="..."></a>
             <div class="card-body">
               <div class="info-producto">
                 <h5>Chaqueta negra con remaches</h5>
@@ -41,7 +43,7 @@
             </div>
           </div>
           <div class="card">
-            <a href="#"><img src="img/oferta1.jpg" class="card-img-top" alt="..." height="90%"></a>
+            <a href="#"><img src="{% static 'img/oferta1.jpg'%}" class="card-img-top" alt="..." height="90%"></a>
             <div class="card-body">
               <div class="info-producto">
                 <h5>Chaqueta negra regular 30% desc.</h5>
