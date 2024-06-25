@@ -9,10 +9,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="Hombre.html" style="color: white;">Hombre</a>
+                <a class="nav-link " aria-current="page" href="{% url 'hombre' %}" style="color: white;">Hombre</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" style="color: white;">Mujer</a>
+                <a class="nav-link" href="{% url 'mujer' %}" style="color: white;">Mujer</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link disabled" aria-disabled="true"></a>
@@ -20,10 +20,10 @@
             </ul>
             <nav class="navbar">
               <div class="container">
-                <a class="navbar-brand" href="cuenta.html">
+                <a class="navbar-brand" href="{% url 'cuenta' %}">
                   <img src="{% static 'img/cuenta.jpg'%}" alt="Bootstrap" width="40" height="40">
                 </a>
-                <a class="navbar-brand" href="cuenta.html">
+                <a class="navbar-brand" href="{% url 'carro' %}">
                   <img src="{% static 'img/carro.jpg'%}" alt="Bootstrap" width="40" height="40">
                 </a>
               </div>
