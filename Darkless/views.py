@@ -1,15 +1,15 @@
 from django.shortcuts import render
-from .models import Genero, Usuario
-from .forms import GeneroForm,UsuarioForm
+from .models import Usuario
+from .forms import UsuarioForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+# Create your views here.
 def index(request):
     context = {
-        "usuario": "",
+        "user": "",
     }
     return render(request, "pages/index.html", context)
-
 
 def todoCatalogo(request):
 
@@ -41,7 +41,6 @@ def mujer(request):
 
   return render(request, "pages/mujer.html", context)
 
-@login_required
 def crud(request):
     usuarios = Usuario.objects.all()
     context = {
@@ -180,7 +179,7 @@ def user_update(request):
         }
         return render(request, "pages/user_update.html", context)
     
-@login_required
+
 def crud_genero(request):
     generos = Genero.objects.all()
 
