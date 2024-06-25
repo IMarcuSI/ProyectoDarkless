@@ -69,15 +69,12 @@ def user_add(request):
         direccion = request.POST["direccion"]
         activo = True
 
-        objGenero = Genero.objects.get(id_genero=genero)
-
         obj = Usuario.objects.create(
             rut=rut,
             nombre=nombre,
             apellido_paterno=appPaterno,
             apellido_materno=appMaterno,
             fecha_nacimiento=fechaNac,
-            id_genero=objGenero,
             telefono=telefono,
             email=correo,
             password=password,
@@ -117,11 +114,9 @@ def user_findEdit(request,pk):
             objects.all() = Obtener todos
         """
         usuario = Usuario.objects.get(rut=pk)
-        generos = Genero.objects.all()
 
         context={
             "usuario":usuario,
-            "generos":generos,
         }
         return render(request,"pages/user_update.html",context)
     else:
@@ -144,15 +139,11 @@ def user_update(request):
         appPaterno = request.POST["appPaterno"]
         appMaterno = request.POST["appMaterno"]
         fechaNac = request.POST["fecha"]
-        genero = request.POST["genero"]
         telefono = request.POST["telefono"]
         correo = request.POST["correo"]
         password = request.POST["password"]
         direccion = request.POST["direccion"]
         activo = True
-
-        """ Obtengo genero desde la BDD para modificar """
-        objGenero = Genero.objects.get(id_genero=genero)
 
         """ Genero la instancia """
 
@@ -162,7 +153,6 @@ def user_update(request):
             apellido_paterno=appPaterno,
             apellido_materno=appMaterno,
             fecha_nacimiento=fechaNac,
-            id_genero=objGenero,
             telefono=telefono,
             email=correo,
             password=password,
@@ -171,89 +161,13 @@ def user_update(request):
         )
         obj.save()
 
-        generos = Genero.objects.all()
+
         context = {
             "mensaje": "Modificado con Exito",
-            "generos":generos,
             "usuario":obj,
         }
         return render(request, "pages/user_update.html", context)
     
-
-def crud_genero(request):
-    generos = Genero.objects.all()
-
-    context={
-        "generos":generos,
-    }
-    return render(request,"pages/crud_genero.html",context)
-
-def genero_add(request):
-    formGenero = GeneroForm()
-    formUsuario = UsuarioForm()
-    if request.method=="POST":
-        nuevo = GeneroForm(request.POST)
-        if nuevo.is_valid():
-            nuevo.save()
-
-            context={
-                "mensaje":"Agregado con exito",
-                "form":formGenero
-            }
-            return render(request,"pages/genero_add.html",context)
-    else:
-        context = {
-            "form":formGenero,
-            "form2":formUsuario
-        }
-        return render(request,"pages/genero_add.html",context)
-
-def genero_del(request,pk):
-    try:
-        genero = Genero.objects.get(id_genero=pk)
-        genero.delete()
-
-        generos = Genero.objects.all()
-        context={
-            "mensaje":"Registro eliminado exitosamente",
-            "generos":generos
-        }
-        return render(request,"pages/crud_genero.html",context)
-    except:
-        generos = Genero.objects.all()
-        context={
-            "mensaje":"Error, Genero no encontrado...",
-            "generos":generos
-        }
-        return render(request,"pages/crud_genero.html",context)
-
-def genero_edit(request,pk):
-    if pk!="":
-        genero = Genero.objects.get(id_genero=pk)
-        form = GeneroForm(instance=genero)
-        if request.method=="POST":
-            nuevo = GeneroForm(request.POST,instance=genero)
-
-            if nuevo.is_valid():
-                nuevo.save()
-
-                context ={
-                    "mensaje":"Modificado con exito",
-                    "form":nuevo
-                }
-                return render(request,"pages/genero_edit.html",context)
-        else:
-            context={
-                "form":form,
-            }
-            return render(request,"pages/genero_edit.html",context)
-    else:
-        generos = Genero.objects.all()
-        context={
-            "mensaje":"Error, genero no encontrado",
-            "generos":generos
-        }
-        return render(request,"pages/crud_genero.html",context)
 
 def loginSession(request):
     if request.method=="POST":

@@ -11,7 +11,7 @@
     <script src="js/java.js"></script>
 </head>
 
-<body>
+<body class="body">
     {% include 'base/header.html'%}
     <main>
         <div class="container">
@@ -59,11 +59,6 @@
                     {% endif%}
                     <a href="{% url 'user_add' %}">
                         <button class="btn btn-primary">Agregar Registro</button>
-                    </a>
-                    <a href="{% url 'crud_genero' %}">
-                        <button class="btn btn-info">
-                            Ver generos
-                        </button>
                     </a>
                 </div>
             </div>
