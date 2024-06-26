@@ -9,7 +9,9 @@ urlpatterns = [
     path("cuenta", views.cuenta, name="cuenta"),
     path("hombre", views.hombre, name="hombre"),
     path("mujer", views.mujer, name="mujer"),
-    path("curd", views.crud, name="crud"),
+    path("crud", views.crud, name="crud"),
+    path("login", views.conectar, name="login"),
+    path("logout", views.desconectar, name="logout"),
 ]
 
 
