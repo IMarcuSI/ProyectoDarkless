@@ -185,11 +185,11 @@ def loginSession(request):
                 "mensaje":"Usuario o contraseña incorrecta",
                 "design" : "alert alert-danger w-50 mx-auto text-center",
             }
-            return render(request,"pages/login.html",context)
+            return render(request,"pages/cuenta.html",context)
     else:
         context = {
         }
-        return render(request,"pages/login.html",context)
+        return render(request,"pages/cuenta.html",context)
 
 def conectar(request):
     if request.method=="POST":
@@ -209,12 +209,12 @@ def conectar(request):
                 "mensaje":"Usuario o contraseña incorrecta",
                 "design":"alert alert-danger w-50 mx-auto text-center",
             }
-            return render(request,"pages/login.html",context)
+            return render(request,"pages/cuenta.html",context)
     else:
         #Corresponde a redireccionar
         context = {
         }
-        return render(request,"pages/login.html",context)
+        return render(request,"pages/cuenta.html",context)
 
 def desconectar(request):
     #del request.session["user"]
@@ -223,4 +223,4 @@ def desconectar(request):
         "mensaje":"Sesion cerrada",
         "design":"alert alert-info w-50 mx-auto text-center",
     }
-    return render(request,"pages/login.html",context)
+    return render(request,"pages/cuenta.html",context)

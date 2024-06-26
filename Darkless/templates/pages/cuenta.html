@@ -40,14 +40,6 @@
                           <label for="fecha" class="form-label">Fecha</label>
                       </div>
                       <div class="form-floating mb-3 w-25 mx-auto">
-                          <select class="form-select" id="genero" name="genero">
-                              {% for tmp in generos %}
-                              <option value="{{tmp.id_genero}}">{{tmp.genero}}</option>
-                              {% endfor %}
-                          </select>
-                          <label for="genero" class="form-label">Genero</label>
-                      </div>
-                      <div class="form-floating mb-3 w-25 mx-auto">
                           <input type="email" class="form-control" id="correo" name="correo">
                           <label for="correo" class="form-label">Correo</label>
                       </div>
@@ -82,7 +74,7 @@
         <div class="row">
             <div class="col-md-8 shadow-lg mx-auto text-center p-3">
                 <h3 style="color: white;">Login</h3>
-                <form action="#" method="POST">
+                <form action="{% url 'cuenta' %}" method="POST">
                     {% csrf_token %}
                     <div class="form-floating mb-3 w-50 mx-auto" >
                         <input type="text" class="form-control" id="username" name="username" placeholder="">
