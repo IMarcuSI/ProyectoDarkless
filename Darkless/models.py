@@ -32,3 +32,26 @@ class Usuario(models.Model):
             + " "
             + str(self.apellido_materno)
         )
+
+class Tipo(models.Model):
+    id_tipo = models.AutoField(primary_key=True, db_column="idTipo")
+    tipo = models.CharField(max_length=25, blank=False, null=False)
+
+    def __str__(self):
+        return str(self.tipo)
+
+
+class Ropa2(models.Model):
+    id_ropa = models.CharField(primary_key=True, max_length=10)
+    nombre_ropa = models.CharField(max_length=20)
+    fecha_lazamiento = models.DateField()
+    id_tipo = models.ForeignKey(
+        "Tipo", on_delete=models.CASCADE, db_column="IDTipo"
+    )
+    activo = models.BooleanField()
+
+    def __str__(self):
+        return (
+            str(self.nombre)
+        )    
+        

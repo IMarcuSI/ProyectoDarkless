@@ -9,25 +9,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/booscss.css'%}">
 </head>
-{% include 'base/header.html'%}
+
 <body class="body">
+    {% include 'base/header.html'%}
     <main>
         <div class="container">
             <div class="row">
                 <div class="col-md-8 shadow-lg mx-auto text-center p-3">
-                    <h3>Ingrese tipo</h3>
                     <form action="" method="POST">
                         {% csrf_token %}
                         <div>
                             {{form.as_p}}
                         </div>
                         {% if mensaje%}
-                        <div class="alert alert-success w-50 mx-auto text-center">
+                        <div class="alert alert-warning w-50 mx-auto text-center">
                             {{mensaje}}
                         </div>
                         {% endif%}
                         <div class="mt-3">
-                            <button type="submit" class="btn btn-dark">Agregar</button>
+                            <button type="submit" class="btn btn-dark">Modificar</button>
                             <a href="{% url 'crud_tipo'%}"><button type="button"
                                     class="btn btn-dark">Volver</button></a>
                         </div>

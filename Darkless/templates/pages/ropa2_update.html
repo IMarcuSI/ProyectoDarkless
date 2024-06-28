@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/booscss.css'%}">
+</head>
+{% include 'base/header.html'%}
+<body class="body">
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 shadow-lg mx-auto text-center p-3">
+                    <h2 class="my-3">Formulario de Modificacion</h2>
+                    <form action="{% url 'ropa2_update' %}" method="POST" class="form-floating">
+                        {% csrf_token %}
+                        <div class="form-floating mb-3 w-50 mx-auto">
+                            <input type="text" value={{usuario.rut}} class="form-control" id="rut" name="rut" readonly>
+                            <label for="id_ropa" class="form-label">Rut</label>
+                        </div>
+                        <div class="form-floating mb-3 w-50 mx-auto">
+                            <input type="text" value={{usuario.nombre}} class="form-control" id="nombre" name="nombre">
+                            <label for="nombre" class="form-label">Nombre</label>
+                        </div>
+                        <div class="form-floating mb-3 w-50 mx-auto">
+                            <input type="date" value={{usuario.fecha_nacimiento|date:"Y-m-d"}} class="form-control"
+                                id="fecha" name="fecha">
+                            <label for="fecha" class="form-label">Fecha</label>
+                        </div>
+                        <div class="form-floating mb-3 w-50 mx-auto">
+                            <select class="form-select" id="tipo" name="tipo">
+                                {% for tmp in tipo %}
+                                {% if tmp.tipo == rops2.id_tipo.tipo%}
+                                <option value="{{tmp.id_tipo}}" selected>{{tmp.tipo}}</option>
+                                {%else%}
+                                <option value="{{tmp.id_tipo}}">{{tmp.tipo}}</option>
+                                {% endif%}
+                                {% endfor %}
+                            </select>
+                            <label for="tipo" class="form-label">Tipo</label>
+                        </div>
+                        {% if mensaje %}
+                        <div class="alert alert-success w-50 mx-auto">
+                            {{mensaje}}
+                        </div>
+                        {% endif %}
+                        <div>
+                            <button type="submit" class="btn btn-warning">Modificar Registro</button><br>
+                            <a href="{% url 'crud_rops2'%}"><button type="button"
+                                    class="btn btn-primary mt-3">Volver</button></a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src='{% static 'js/bootstrap.bundle.min.js' %}'></script>
+</body>
+
+</html>

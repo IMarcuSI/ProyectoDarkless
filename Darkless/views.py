@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Genero,Usuario
-from .forms import GeneroForm,UsuarioForm
+from .models import Genero,Usuario,Ropa2,Tipo
+from .forms import GeneroForm,UsuarioForm,Ropa2Form ,TipoForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -23,7 +23,6 @@ def carro(request):
 
   return render(request, "pages/carro.html", context)
 
-
 def hombre(request):
 
   context = {}
@@ -36,13 +35,19 @@ def mujer(request):
 
   return render(request, "pages/mujer.html", context)
 
+def crud_ropa2(request):
+    ropas = Ropa2.objects.all()
+    context = {
+        "ropas": ropas,
+    }
+    return render(request, "pages/crud_ropa2.html", context)
+
 def crud(request):
     usuarios = Usuario.objects.all()
     context = {
         "usuarios": usuarios,
     }
     return render(request, "pages/crud.html", context)
-
 
 def user_add(request):
     if request.method != "POST":
@@ -84,7 +89,6 @@ def user_add(request):
             "mensaje": "Registro Exitoso",
         }
         return render(request, "pages/user_add.html", context)
-
 
 def user_del(request, pk):
     try:
@@ -304,3 +308,148 @@ def desconectar(request):
         "design":"alert alert-info w-50 mx-auto text-center",
     }
     return render(request,"pages/login.html",context)
+
+def crud_tipo(request):
+    tipos = Tipo.objects.all()
+
+    context={
+        "tipos":tipos,
+    }
+    return render(request,"pages/crud_tipo.html",context)
+
+def tipo_add(request):
+    formTipo = TipoForm()
+    formRopa2 = Ropa2Form()
+    if request.method=="POST":
+        nuevo = TipoForm(request.POST)
+        if nuevo.is_valid():
+            nuevo.save()
+
+            context={
+                "mensaje":"Agregado con exito",
+                "form":formTipo
+            }
+            return render(request,"pages/tipo_add.html",context)
+    else:
+        context = {
+            "form":formTipo,
+            "form2":formRopa2
+        }
+        return render(request,"pages/tipo_add.html",context)
+    
+def tipo_del(request,pk):
+    try:
+        tipo = Tipo.objects.get(id_tipo=pk)
+        tipo.delete()
+
+        tipos = Tipos.objects.all()
+        context={
+            "mensaje":"Registro eliminado exitosamente",
+            "tipos":tipos
+        }
+        return render(request,"pages/crud_tipo.html",context)
+    except:
+        generos = Tipo.objects.all()
+        context={
+            "mensaje":"Error, tipo no encontrado...",
+            "tipo":tipo
+        }
+        return render(request,"pages/crud_tipo.html",context)
+
+def ropa2_add(request):
+    if request.method != "POST":
+        tipos = Tipo.objects.all()
+        context = {
+            "tipos": tipos,
+        }
+        return render(request, "pages/ropa2_add.html", context)
+    else:
+        id_ropa = request.POST["id_ropa"]
+        nombre = request.POST["nombre_ropa"]
+        fecha = request.POST["fecha"]
+        tipo = request.POST["tipo"]
+        activo = True
+
+        objTipo = Tipo.objects.get(id_tipo=tipo)
+
+        obj = Ropa2.objects.create(
+            id_ropa=id_ropa,
+            nombre_ropa=nombre,
+            fecha_lazamiento=fecha,
+            id_tipo=objTipo,
+            activo=activo,
+        )
+        obj.save()
+        context = {
+            "mensaje": "Registro Exitoso",
+        }
+        return render(request, "pages/ropa2_add.html", context)
+
+def tipo_edit(request,pk):
+    if pk!="":
+        tipo = Tipo.objects.get(id_tipo=pk)
+        form = TipoForm(instance=tipo)
+        if request.method=="POST":
+            nuevo = TipoForm(request.POST,instance=tipo)
+
+            if nuevo.is_valid():
+                nuevo.save()
+
+                context ={
+                    "mensaje":"Modificado con exito",
+                    "form":nuevo
+                }
+                return render(request,"pages/tipo_edit.html",context)
+        else:
+            context={
+                "form":form,
+            }
+            return render(request,"pages/tipo_edit.html",context)
+    else:
+        tipos = Tipo.objects.all()
+        context={
+            "mensaje":"Error, tipo no encontrado",
+            "tipos":tipos
+        }
+        return render(request,"pages/crud_.html",context)
+    
+def tipo_del(request,pk):
+    try:
+        tipo = Tipo.objects.get(id_tipo=pk)
+        tipo.delete()
+
+        tipos = Tipo.objects.all()
+        context={
+            "mensaje":"Registro eliminado exitosamente",
+            "tipos":tipos
+        }
+        return render(request,"pages/crud_tipo.html",context)
+    except:
+        tipos= Tipo.objects.all()
+        context={
+            "mensaje":"Error, Tipo no encontrado...",
+            "tipos":tipos
+        }
+        return render(request,"pages/crud_tipo.html",context)
+    
+def ropa2_findEdit(request,pk):
+    if pk!="":
+        """ 
+            objects.get() = Obtener datos con filtro
+            objects.all() = Obtener todos
+        """
+        ropa2 = Ropa2.objects.get(id_ropa=pk)
+        tipos = Tipo.objects.all()
+
+        context={
+            "ropa2":ropa2,
+            "tipos":tipos,
+        }
+        return render(request,"pages/ropa2_update.html",context)
+    else:
+        ropas = Ropa2.objects.all()
+        context={
+            "mensaje":"Error,id no encontrado",
+            "ropas":ropas
+        }
+        return render(request,"pages/crud_ropa2.html",context)

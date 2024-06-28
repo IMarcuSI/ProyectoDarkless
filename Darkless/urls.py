@@ -20,6 +20,12 @@ urlpatterns = [
     path("genero_add", views.genero_add, name="genero_add"),
     path("genero_del/<str:pk>", views.genero_del, name="genero_del"),
     path("genero_edit/<str:pk>", views.genero_edit, name="genero_edit"),
+    path("crud_tipo", views.crud_tipo, name="crud_tipo"),
+    path("tipo_add", views.tipo_add, name="tipo_add"),
+    path("tipo_del/<str:pk>", views.tipo_del, name="tipo_del"),
+    path("crud_ropa2", views.crud_ropa2, name="crud_ropa2"),
+    path("ropa2_add", views.ropa2_add, name="ropa2_add"),
+    path("tipo_edit/<str:pk>", views.tipo_edit, name="tipo_edit"),
 ]
 
 
