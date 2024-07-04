@@ -30,15 +30,17 @@
                         <thead>
                             <th>ID ropa</th>
                             <th>Nombre</th>
+                            <th>Tipo</th>
                             <th>Modificar</th>
                             <th>Eliminar</th>
                         </thead>
                         <tbody>
                             {% if ropa2 %}
-                            {% for tmp in ropa2%}
+                            {% for tmp in ropa2 %}
                             <tr>
                                 <td>{{tmp.id_ropa}}</td>
                                 <td>{{tmp.nombre_ropa}}</td>
+                                <td>{{tmp.id_tipo}}</td>
                                 <td><a href="{% url 'ropa2_findEdit' pk=tmp.id_ropa%}"><button
                                             class="btn btn-dark">Modificar</button></a></td>
                                 <td><a href="{% url 'ropa2_del' pk=tmp.id_ropa%}"><button

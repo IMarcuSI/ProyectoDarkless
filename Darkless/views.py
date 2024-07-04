@@ -257,7 +257,7 @@ def loginSession(request):
     if request.method=="POST":
         username = request.POST["username"]
         password = request.POST["password"]
-        if username == "j.riquelmee" and password=="pass1234":
+        if username == "marcus" and password=="pass123":
             request.session["user"] = username
             usuarios = Usuario.objects.all()
             context = {
@@ -450,6 +450,59 @@ def ropa2_findEdit(request,pk):
         ropas = Ropa2.objects.all()
         context={
             "mensaje":"Error,id no encontrado",
-            "ropas":ropas
+            "ropa2":ropa2
         }
         return render(request,"pages/crud_ropa2.html",context)
+    
+def ropa2_del(request, pk):
+    try:
+        ropa2 = Ropa2.objects.get(rut=pk)
+        ropa2.delete()
+
+        ropas = Ropa2.objects.all()
+        context = {
+            "mensaje": "Registro Eliminado",
+            "ropas": ropas,
+        }
+        return render(request, "pages/crud_ropa2.html", context)
+    except:
+        ropas = Ropa2.objects.all()
+        context = {
+            "mensaje": "Error,Rut no encontrado...",
+            "ropas": ropas,
+        }
+        return render(request, "pages/crud_ropas.html", context)
+    
+def ropa2_update(request):
+    if request.method=="POST":
+        """ 
+            Capturo todos los datos del front
+            Identificamos
+            Asignamos nombre 
+        """
+        id_ropa = request.POST["id_ropa"]
+        nombre_ropa = request.POST["nombre_ropa"]
+        fecha = request.POST["fecha"]
+        tipo = request.POST["tipo"]
+        activo = True
+        """ Obtengo genero desde la BDD para modificar """
+        objtipo = Tipo.objects.get(id_tipo=tipo)
+
+        """ Genero la instancia """
+
+        obj = Ropa2(
+        id_ropa = id_ropa,
+        nombre_ropa = nombre_ropa,
+        fecha = fecha,
+        tipo = tipo,
+        activo = True,
+        )
+        obj.save()
+
+        tipos = Tipo.objects.all()
+        context = {
+            "mensaje": "Modificado con Exito",
+            "tipos":tipos,
+            "ropa2":obj,
+        }
+        return render(request, "pages/user_update.html", context)

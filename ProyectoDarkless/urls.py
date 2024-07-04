@@ -21,5 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("darkless/", include("Darkless.urls")),
     path("", include("Darkless.urls")),
-    path("accounts/", include("Darkless.urls")),
 ]
