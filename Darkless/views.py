@@ -35,20 +35,21 @@ def mujer(request):
 
   return render(request, "pages/mujer.html", context)
 
+@login_required
 def crud_ropa2(request):
     ropas = Ropa2.objects.all()
     context = {
         "ropas": ropas,
     }
     return render(request, "pages/crud_ropa2.html", context)
-
+@login_required
 def crud(request):
     usuarios = Usuario.objects.all()
     context = {
         "usuarios": usuarios,
     }
     return render(request, "pages/crud.html", context)
-
+@login_required
 def user_add(request):
     if request.method != "POST":
         generos = Genero.objects.all()
@@ -177,7 +178,8 @@ def user_update(request):
             "usuario":obj,
         }
         return render(request, "pages/user_update.html", context)
-    
+
+@login_required
 def crud_genero(request):
     generos = Genero.objects.all()
 
@@ -308,7 +310,7 @@ def desconectar(request):
         "design":"alert alert-info w-50 mx-auto text-center",
     }
     return render(request,"pages/login.html",context)
-
+@login_required
 def crud_tipo(request):
     tipos = Tipo.objects.all()
 
