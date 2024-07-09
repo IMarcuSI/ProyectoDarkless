@@ -29,6 +29,7 @@ urlpatterns = [
     path("ropa2_update", views.ropa2_update, name="ropa2_update"),
     path("ropa2_del/<str:pk>", views.ropa2_del, name="ropa2_del"),
     path("ropa2_findEdit/<str:pk>", views.ropa2_findEdit, name="ropa2_findEdit"),
+
 ]
 
 

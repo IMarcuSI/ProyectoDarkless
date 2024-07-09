@@ -24,7 +24,7 @@
                             <th>Eliminar</th>
                         </thead>
                         <tbody>
-                            {% if Tipos%}
+                            {% if tipos%}
                             {% for tmp in tipos%}
                             <tr>
                                 <td>{{tmp.id_tipos}}</td>
@@ -43,7 +43,7 @@
                         {{mensaje}}
                     </div>
                     {% endif%}
-                    <a href="{% url 'tipo_add' %}"><button class="btn btn-dark">Agregar genero</button></a>
+                    <a href="{% url 'tipo_add' %}"><button class="btn btn-dark">Agregar Tipo</button></a>
                     <a href="{% url 'crud_ropa2'%}"><button class="btn btn-dark">Volver</button></a>
                 </div>
             </div>

@@ -16,7 +16,7 @@ def todoCatalogo(request):
   context = {}
 
   return render(request, "pages/todoCatalogo.html", context)
-
+@login_required
 def carro(request):
 
   context = {}
@@ -187,7 +187,7 @@ def crud_genero(request):
         "generos":generos,
     }
     return render(request,"pages/crud_genero.html",context)
-
+@login_required
 def genero_add(request):
     formGenero = GeneroForm()
     formUsuario = UsuarioForm()
