@@ -52,6 +52,6 @@ class Ropa2(models.Model):
 
     def __str__(self):
         return (
-            str(self.nombre)
+            str(self.nombre_ropa)
         )    
         

@@ -27,8 +27,8 @@
                             {% if tipos%}
                             {% for tmp in tipos%}
                             <tr>
-                                <td>{{tmp.id_tipos}}</td>
-                                <td>{{tmp.tipos}}</td>
+                                <td>{{tmp.id_tipo}}</td>
+                                <td>{{tmp.tipo}}</td>
                                 <td><a href="{% url 'tipo_edit' pk=tmp.id_tipo %}"><button
                                             class="btn btn-dark">Modificar</button></a></td>
                                 <td><a href="{% url 'tipo_del' pk=tmp.id_tipo %}"><button
