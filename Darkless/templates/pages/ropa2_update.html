@@ -19,22 +19,22 @@
                     <form action="{% url 'ropa2_update' %}" method="POST" class="form-floating">
                         {% csrf_token %}
                         <div class="form-floating mb-3 w-50 mx-auto">
-                            <input type="text" value={{usuario.rut}} class="form-control" id="rut" name="rut" readonly>
-                            <label for="id_ropa" class="form-label">Rut</label>
+                            <input type="text" value={{ropa2.id_ropa}} class="form-control" id="id_ropa" name="id_ropa" readonly>
+                            <label for="id_ropa" class="form-label">ID ropa</label>
                         </div>
                         <div class="form-floating mb-3 w-50 mx-auto">
-                            <input type="text" value={{usuario.nombre}} class="form-control" id="nombre" name="nombre">
+                            <input type="text" value={{ropa2.nombre_ropa}} class="form-control" id="nombre_ropa" name="nombre_ropa">
                             <label for="nombre" class="form-label">Nombre</label>
                         </div>
                         <div class="form-floating mb-3 w-50 mx-auto">
-                            <input type="date" value={{usuario.fecha_nacimiento|date:"Y-m-d"}} class="form-control"
+                            <input type="date" value={{ropa2.fecha_lazamiento|date:"Y-m-d"}} class="form-control"
                                 id="fecha" name="fecha">
                             <label for="fecha" class="form-label">Fecha</label>
                         </div>
                         <div class="form-floating mb-3 w-50 mx-auto">
                             <select class="form-select" id="tipo" name="tipo">
                                 {% for tmp in tipo %}
-                                {% if tmp.tipo == rops2.id_tipo.tipo%}
+                                {% if tmp.tipo == ropa2.id_tipo.tipo%}
                                 <option value="{{tmp.id_tipo}}" selected>{{tmp.tipo}}</option>
                                 {%else%}
                                 <option value="{{tmp.id_tipo}}">{{tmp.tipo}}</option>
@@ -49,9 +49,9 @@
                         </div>
                         {% endif %}
                         <div>
-                            <button type="submit" class="btn btn-warning">Modificar Registro</button><br>
+                            <button type="submit" class="btn btn-dark">Modificar Registro</button><br>
                             <a href="{% url 'crud_ropa2'%}"><button type="button"
-                                    class="btn btn-primary mt-3">Volver</button></a>
+                                    class="btn btn-dark mt-3">Volver</button></a>
                         </div>
 
                     </form>
